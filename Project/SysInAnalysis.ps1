@@ -22,8 +22,6 @@
 #15-Driver List
 #16-Documents and Downloads (If a user is provided)
 
-
-if($args.count -eq 0) {
 "`n`r`t`t`t`t`t`t`t`tWindows Description:"
 Get-CimInstance Win32_OperatingSystem | select-object LocalDateTime,LastBootUpTime,CurrentTimeZone,RegisteredUser,CSName,Description,Caption,OSArchitecture,BootDevice,SystemDirectory,SerialNumber,Version,ServicePackMajorVersion,InstallDate,BuildNumber | Format-Table –AutoSize
 
@@ -84,7 +82,6 @@ Get-ChildItem -Path C:\Users\$env:username\downloads | select mode, name, length
 
 "`n`r`t`t`t`t`t`t`t`t.exe Files:"
 Get-ChildItem -Path C:\Users\ -Filter *.exe -Recurse -File| Sort-Object lastwritetime -Descending | select-object FullName, LastWriteTime, Length | format-table -autosize
-}
 
 
 
