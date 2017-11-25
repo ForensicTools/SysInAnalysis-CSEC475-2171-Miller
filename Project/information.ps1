@@ -4,7 +4,7 @@
 while(($Option=Read-Host "System Information`nPlease Enter an option") -ne "back"){
     switch($Option)
     {
-        "-h"{"`t`t`t -d -Displays select statements 1-18`n
+        "-h"{"`n-d -Displays select statements 1-18`n
              -s -Prompts user for a number 1-22 to display specified information`n
              -f -Prompts user for the name of a file, If the file exists the path is displayed`n
              -a -Displays all Aliases`n
@@ -17,48 +17,48 @@ while(($Option=Read-Host "System Information`nPlease Enter an option") -ne "back
     
         "-d"{
             "`n`r`t`t`t`t`t`t`t`tWindows Description:"
-            Get-CimInstance Win32_OperatingSystem | select-object LocalDateTime,LastBootUpTime,CurrentTimeZone,RegisteredUser,CSName,Description,Caption,OSArchitecture,BootDevice,SystemDirectory,SerialNumber,Version,ServicePackMajorVersion,InstallDate,BuildNumber | Format-Table –AutoSize
+            Get-CimInstance Win32_OperatingSystem | select-object LocalDateTime,LastBootUpTime,CurrentTimeZone,RegisteredUser,CSName,Description,Caption,OSArchitecture,BootDevice,SystemDirectory,SerialNumber,Version,ServicePackMajorVersion,InstallDate,BuildNumber | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tProcessor Information:" 
-            Get-CimInstance Win32_Processor | select-object DeviceID,Name,Description,CreationClassName,SystemCreationClassName,OtherFamilyDescription,Manufacturer,NumberOfCores,NumberOfEnabledCore,NumberOfLogicalProcessors,PartNumber,ProcessorId,SerialNumber,CimClass | Format-Table –AutoSize
+            Get-CimInstance Win32_Processor | select-object DeviceID,Name,Description,CreationClassName,SystemCreationClassName,OtherFamilyDescription,Manufacturer,NumberOfCores,NumberOfEnabledCore,NumberOfLogicalProcessors,PartNumber,ProcessorId,SerialNumber,CimClass | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tRAM information:"
-            Get-CimInstance Win32_PhysicalMemory | select-object Caption,Manufacturer,Model,PartNumber,SerialNumber,Tag,Capacity,CimClass | Format-Table –AutoSize
-            Get-WmiObject Win32_PhysicalMemoryArray | select-object MemoryDevices,MaxCapacity,Manufacturer | Format-Table –AutoSize
+            Get-CimInstance Win32_PhysicalMemory | select-object Caption,Manufacturer,Model,PartNumber,SerialNumber,Tag,Capacity,CimClass | Format-Table â€“AutoSize
+            Get-WmiObject Win32_PhysicalMemoryArray | select-object MemoryDevices,MaxCapacity,Manufacturer | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tDisk Information:"
-            Get-Disk | select-object DiskNumber,PartitionStyle,OperationalStatus,HealthStatus,BusType,OfflineReason,UniqueId,FirmwareVersion,Model,NumberOfPartitions,PhysicalSectorSize,SerialNumber,Signature,Size,Path | Format-Table –AutoSize
-            Get-Partition | select DiskNumber,PartitionNumber,Type,OperationalStatus,IsActive,IsBoot,IsHidden,IsOffline,IsShadowCopy,Size | Format-Table –AutoSize
-            Get-PhysicalDisk | select ClassName,OperationalStatus,HealthStatus,BusType,MediaType,OperationalDetail,SerialNumber | Format-Table –AutoSize
+            Get-Disk | select-object DiskNumber,PartitionStyle,OperationalStatus,HealthStatus,BusType,OfflineReason,UniqueId,FirmwareVersion,Model,NumberOfPartitions,PhysicalSectorSize,SerialNumber,Signature,Size,Path | Format-Table â€“AutoSize
+            Get-Partition | select DiskNumber,PartitionNumber,Type,OperationalStatus,IsActive,IsBoot,IsHidden,IsOffline,IsShadowCopy,Size | Format-Table â€“AutoSize
+            Get-PhysicalDisk | select ClassName,OperationalStatus,HealthStatus,BusType,MediaType,OperationalDetail,SerialNumber | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tDomain Information:"
-            Get-CimInstance Win32_ComputerSystem | select-object Name,PrimaryOwnerContact,UserName,Description,DNSHostName,Domain,workgroup,Manufacturer,Model,SystemFamily,SystemSKUNumber,SystemType,TotalPhysicalMemory | Format-Table –AutoSize
+            Get-CimInstance Win32_ComputerSystem | select-object Name,PrimaryOwnerContact,UserName,Description,DNSHostName,Domain,workgroup,Manufacturer,Model,SystemFamily,SystemSKUNumber,SystemType,TotalPhysicalMemory | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tUser Information:"
-            Get-LocalUser | select-object Name,ObjectClass,PrincipleSource,LastLogon,PasswordRequired,PasswordLastSet,FullName,Description,SID,Enabled | Format-Table –AutoSize
+            Get-LocalUser | select-object Name,ObjectClass,PrincipleSource,LastLogon,PasswordRequired,PasswordLastSet,FullName,Description,SID,Enabled | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tUserEventLog:"
-            Get-EventLog -ComputerName "." System -Source Microsoft-Windows-Winlogon | Format-Table –AutoSize
+            Get-EventLog -ComputerName "." System -Source Microsoft-Windows-Winlogon | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tStartup Programs:"
-            Get-CimInstance Win32_StartupCommand | select-object Name,User,Caption,UserSID,Location | Format-Table –AutoSize
+            Get-CimInstance Win32_StartupCommand | select-object Name,User,Caption,UserSID,Location | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tScheduled Tasks:"
-            Get-ScheduledTask | select Author,TaskName,Date,State,TaskPath,Triggers,Actions | Format-Table –AutoSize
+            Get-ScheduledTask | select Author,TaskName,Date,State,TaskPath,Triggers,Actions | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tNetwork Information:"
-            Get-NetAdapterHardwareInfo | Select Name,ifDesc,Bus,Device,Slot,Caption,Description,InterfaceDescription,SystemName,SlotNumber | Format-Table –AutoSize
+            Get-NetAdapterHardwareInfo | Select Name,ifDesc,Bus,Device,Slot,Caption,Description,InterfaceDescription,SystemName,SlotNumber | Format-Table â€“AutoSize
 
-            Get-CimInstance Win32_NetworkAdapterConfiguration | select MACAddress,IPAddress,DHCPLEaseObtained,DHCPLeaseExpires,DHCPServer,DNSDomain,Description,DefaultGateway | Format-Table –AutoSize
+            Get-CimInstance Win32_NetworkAdapterConfiguration | select MACAddress,IPAddress,DHCPLEaseObtained,DHCPLeaseExpires,DHCPServer,DNSDomain,Description,DefaultGateway | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tDNS Cache Information:"
-            Get-DnsClientCache | select Name,Entry,Data,Section | Format-Table –AutoSize
+            Get-DnsClientCache | select Name,Entry,Data,Section | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tPrinter Information:"
-            Get-Printer | Select Name,PrinterStatus,Type,DeviceType,DataType,DriverName,PortName,PrintProcessor | Format-Table –AutoSize
+            Get-Printer | Select Name,PrinterStatus,Type,DeviceType,DataType,DriverName,PortName,PrintProcessor | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tList Of Software:"
-            Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate | Format-Table –AutoSize
+            Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate | Format-Table â€“AutoSize
 
             "`n`r`t`t`t`t`t`t`t`tProcess' List:"
             Get-Process | select processname,path,id | Format-Table -AutoSize
@@ -74,7 +74,7 @@ while(($Option=Read-Host "System Information`nPlease Enter an option") -ne "back
             Get-ChildItem -Path C:\Users\ -Filter *.exe -Recurse -File| Sort-Object lastwritetime -Descending | select-object FullName, LastWriteTime, Length | format-table -autosize
         
             "`n`r`t`t`t`t`t`t`t`tUSB Information:"
-            Get-ItemProperty -Path ’HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*’ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service
+            Get-ItemProperty -Path â€™HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*â€™ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service
             gwmi cim_logicaldisk | ? drivetype -eq 2
 
         }
@@ -116,59 +116,59 @@ while(($Option=Read-Host "System Information`nPlease Enter an option") -ne "back
 
                          1  {
                                 "`n`r`t`t`t`t`t`t`t`tWindows Description:"
-                                Get-CimInstance Win32_OperatingSystem | select-object LocalDateTime,LastBootUpTime,CurrentTimeZone,RegisteredUser,CSName,Description,Caption,OSArchitecture,BootDevice,SystemDirectory,SerialNumber,Version,ServicePackMajorVersion,InstallDate,BuildNumber | Format-Table –AutoSize
+                                Get-CimInstance Win32_OperatingSystem | select-object LocalDateTime,LastBootUpTime,CurrentTimeZone,RegisteredUser,CSName,Description,Caption,OSArchitecture,BootDevice,SystemDirectory,SerialNumber,Version,ServicePackMajorVersion,InstallDate,BuildNumber | Format-Table â€“AutoSize
                             }
                          2  {
                                 "`n`r`t`t`t`t`t`t`t`tProcessor Information:"
-                                Get-CimInstance Win32_Processor | select-object DeviceID,Name,Description,CreationClassName,SystemCreationClassName,OtherFamilyDescription,Manufacturer,NumberOfCores,NumberOfEnabledCore,NumberOfLogicalProcessors,PartNumber,ProcessorId,SerialNumber,CimClass | Format-Table –AutoSize
+                                Get-CimInstance Win32_Processor | select-object DeviceID,Name,Description,CreationClassName,SystemCreationClassName,OtherFamilyDescription,Manufacturer,NumberOfCores,NumberOfEnabledCore,NumberOfLogicalProcessors,PartNumber,ProcessorId,SerialNumber,CimClass | Format-Table â€“AutoSize
                             }
                          3  {
                                 "`n`r`t`t`t`t`t`t`t`tRAM information:"
-                                Get-CimInstance Win32_PhysicalMemory | select-object Caption,Manufacturer,Model,PartNumber,SerialNumber,Tag,Capacity,CimClass | Format-Table –AutoSize
-                                Get-WmiObject Win32_PhysicalMemoryArray | select-object MemoryDevices,MaxCapacity,Manufacturer | Format-Table –AutoSize
+                                Get-CimInstance Win32_PhysicalMemory | select-object Caption,Manufacturer,Model,PartNumber,SerialNumber,Tag,Capacity,CimClass | Format-Table â€“AutoSize
+                                Get-WmiObject Win32_PhysicalMemoryArray | select-object MemoryDevices,MaxCapacity,Manufacturer | Format-Table â€“AutoSize
                             }
                          4  {
                                 "`n`r`t`t`t`t`t`t`t`tDisk Information:"
-                                Get-Disk | select-object DiskNumber,PartitionStyle,OperationalStatus,HealthStatus,BusType,OfflineReason,UniqueId,FirmwareVersion,Model,NumberOfPartitions,PhysicalSectorSize,SerialNumber,Signature,Size,Path | Format-Table –AutoSize
-                                Get-Partition | select DiskNumber,PartitionNumber,Type,OperationalStatus,IsActive,IsBoot,IsHidden,IsOffline,IsShadowCopy,Size | Format-Table –AutoSize
-                                Get-PhysicalDisk | select ClassName,OperationalStatus,HealthStatus,BusType,MediaType,OperationalDetail,SerialNumber | Format-Table –AutoSize
+                                Get-Disk | select-object DiskNumber,PartitionStyle,OperationalStatus,HealthStatus,BusType,OfflineReason,UniqueId,FirmwareVersion,Model,NumberOfPartitions,PhysicalSectorSize,SerialNumber,Signature,Size,Path | Format-Table â€“AutoSize
+                                Get-Partition | select DiskNumber,PartitionNumber,Type,OperationalStatus,IsActive,IsBoot,IsHidden,IsOffline,IsShadowCopy,Size | Format-Table â€“AutoSize
+                                Get-PhysicalDisk | select ClassName,OperationalStatus,HealthStatus,BusType,MediaType,OperationalDetail,SerialNumber | Format-Table â€“AutoSize
                             }
                          5  {
                                 "`n`r`t`t`t`t`t`t`t`tDomain Information:"
-                                Get-CimInstance Win32_ComputerSystem | select-object Name,PrimaryOwnerContact,UserName,Description,DNSHostName,Domain,workgroup,Manufacturer,Model,SystemFamily,SystemSKUNumber,SystemType,TotalPhysicalMemory | Format-Table –AutoSize
+                                Get-CimInstance Win32_ComputerSystem | select-object Name,PrimaryOwnerContact,UserName,Description,DNSHostName,Domain,workgroup,Manufacturer,Model,SystemFamily,SystemSKUNumber,SystemType,TotalPhysicalMemory | Format-Table â€“AutoSize
                             }
                          6  {
                                 "`n`r`t`t`t`t`t`t`t`tUser Information:"
-                                Get-LocalUser | select-object Name,ObjectClass,PrincipleSource,LastLogon,PasswordRequired,PasswordLastSet,FullName,Description,SID,Enabled | Format-Table –AutoSize
+                                Get-LocalUser | select-object Name,ObjectClass,PrincipleSource,LastLogon,PasswordRequired,PasswordLastSet,FullName,Description,SID,Enabled | Format-Table â€“AutoSize
                             }
                          7  {
                                 "`n`r`t`t`t`t`t`t`t`tUserEventLog:"
-                                Get-EventLog -ComputerName "." System -Source Microsoft-Windows-Winlogon | Format-Table –AutoSize
+                                Get-EventLog -ComputerName "." System -Source Microsoft-Windows-Winlogon | Format-Table â€“AutoSize
                             }
                          8  {
                                 "`n`r`t`t`t`t`t`t`t`tStartup Programs:"
-                                Get-CimInstance Win32_StartupCommand | select-object Name,User,Caption,UserSID,Location | Format-Table –AutoSize
+                                Get-CimInstance Win32_StartupCommand | select-object Name,User,Caption,UserSID,Location | Format-Table â€“AutoSize
                             }
                         9  {
                                 "`n`r`t`t`t`t`t`t`t`tScheduled Tasks:"
-                                Get-ScheduledTask | select Author,TaskName,Date,State,TaskPath,Triggers,Actions | Format-Table –AutoSize
+                                Get-ScheduledTask | select Author,TaskName,Date,State,TaskPath,Triggers,Actions | Format-Table â€“AutoSize
                             }
                         10  {
                                 "`n`r`t`t`t`t`t`t`t`tNetwork Information:"
-                                Get-NetAdapterHardwareInfo | Select Name,ifDesc,Bus,Device,Slot,Caption,Description,InterfaceDescription,SystemName,SlotNumber | Format-Table –AutoSize
-                                Get-CimInstance Win32_NetworkAdapterConfiguration | select MACAddress,IPAddress,DHCPLEaseObtained,DHCPLeaseExpires,DHCPServer,DNSDomain,Description,DefaultGateway | Format-Table –AutoSize
+                                Get-NetAdapterHardwareInfo | Select Name,ifDesc,Bus,Device,Slot,Caption,Description,InterfaceDescription,SystemName,SlotNumber | Format-Table â€“AutoSize
+                                Get-CimInstance Win32_NetworkAdapterConfiguration | select MACAddress,IPAddress,DHCPLEaseObtained,DHCPLeaseExpires,DHCPServer,DNSDomain,Description,DefaultGateway | Format-Table â€“AutoSize
                             }
                         11  {
                                 "`n`r`t`t`t`t`t`t`t`tDNS Cache Information:"
-                                Get-DnsClientCache | select Name,Entry,Data,Section | Format-Table –AutoSize
+                                Get-DnsClientCache | select Name,Entry,Data,Section | Format-Table â€“AutoSize
                             }
                         12  {
                                 "`n`r`t`t`t`t`t`t`t`tPrinter Information:"
-                                Get-Printer | Select Name,PrinterStatus,Type,DeviceType,DataType,DriverName,PortName,PrintProcessor | Format-Table –AutoSize
+                                Get-Printer | Select Name,PrinterStatus,Type,DeviceType,DataType,DriverName,PortName,PrintProcessor | Format-Table â€“AutoSize
                             }
                         13  {
                                 "`n`r`t`t`t`t`t`t`t`tList Of Software:"
-                                Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate | Format-Table –AutoSize
+                                Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate | Format-Table â€“AutoSize
                             }
                         14  {
                                 "`n`r`t`t`t`t`t`t`t`tProcess' List:"
@@ -181,7 +181,7 @@ while(($Option=Read-Host "System Information`nPlease Enter an option") -ne "back
                         
                         16{
                                 "`n`r`t`t`t`t`t`t`t`tUSB Information:"
-                                Get-ItemProperty -Path ’HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*’ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service
+                                Get-ItemProperty -Path â€™HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*â€™ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service
                                 gwmi cim_logicaldisk | ? drivetype -eq 2
                             }
                         17  {
@@ -318,7 +318,7 @@ while(($Option=Read-Host "System Information`nPlease Enter an option") -ne "back
                                                 Get-ChildItem -Path C:\Users\ -Filter *.exe -Recurse -File| Sort-Object lastwritetime -Descending | select-object FullName, LastWriteTime, Length >> $OutPut
                                         
                                                 "`n`r`t`t`t`t`t`t`t`tUSB Information:" >> $OutPut
-                                                Get-ItemProperty -Path ’HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*’ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service >> $OutPut
+                                                Get-ItemProperty -Path â€™HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*â€™ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service >> $OutPut
                                                 gwmi cim_logicaldisk | ? drivetype -eq 2 >> $OutPut
                                         }
                                   "select output"{
@@ -429,7 +429,7 @@ while(($Option=Read-Host "System Information`nPlease Enter an option") -ne "back
                                             }
                                         16  {
                                             "`n`r`t`t`t`t`t`t`t`tUSB Information:" >> $OutPut
-                                            Get-ItemProperty -Path ’HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*’ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service >> $OutPut
+                                            Get-ItemProperty -Path â€™HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*â€™ | Select-Object friendlyname,mfg,driver,hardwareid,compatibleids,service >> $OutPut
                                             gwmi cim_logicaldisk | ? drivetype -eq 2 >> $OutPut
                                             }
                                         17  {
