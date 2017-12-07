@@ -1,5 +1,4 @@
 # SysInAnalysis-CSEC475-2171-Miller
-
 Tested on Powershell version 5.0 Windows 10
 
 Running powershell as an administrator is recommended, do this by searching for powershell in the search bar, right click on powershell to display a drop down menu and left click the run as administrator option. Ensure that you are able to run powershell scripts with Get-ExecutionPolicy, which should be set to unsigned or remotesigned. If this is not the case then running powershell as an administrator, use the command “Set-ExecutionPolicy RemoteSigned” without quotes.
@@ -68,3 +67,4 @@ Running usb.ps1 will collect information on a usb drive that has been inserted i
 
 Ending Note:
 These scripts can be run either on a computer or from a usb drive for mobility. This can easily be configured to add scripts to it by changing the SysInAnalysis.ps1 and adding the name and path to the switch statement
+
